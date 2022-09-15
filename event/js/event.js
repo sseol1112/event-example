@@ -142,9 +142,14 @@ function submitBtn() {
         bgImg : currBgImg,
         imgIconSrc : currIconImgArr
     }
-    //localStorage 활용해서 데이터 저장
-    localStorage.setItem('cart', JSON.stringify(selectedVal));
-    
+
+    if(!currIconImgArr || !currBgImg || !currText){
+        alert('입력 및 선택한 내용을 다시 확인해주세요.')        
+    } else {
+        //localStorage 활용해서 데이터 저장
+        localStorage.setItem('cart', JSON.stringify(selectedVal));
+        alert('제출 되었습니다.');
+    }
 }
 
 function addText() {

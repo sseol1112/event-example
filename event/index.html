@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>아이폰14 배꾸이벤트</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="../event/js/event.js" defer></script>
+	<style>
+		* {padding: 0; margin: 0; box-sizing: border-box;}
+		ol, ul {list-style: none;}
+
+		.bg_design_wrap {width: 1200px; margin: 100px auto;}
+		.bg_design_wrap .bg_design_tit {margin-bottom: 100px; text-align: center;}
+		.bg_design_wrap .bg_designer {display: flex; justify-content: center;}
+		.bg_design_wrap .view_bg {width: 390px; height: 700px; background-color: rgba(0,0,0,.2);}
+		.bg_design_wrap .view_bg .design_inner {width: 100%; height: 100%; background-position: center; background-size: cover; background-repeat: no-repeat;}
+		.bg_design_wrap .bg_info {width: 630px; padding-left: 100px;}
+		.bg_design_wrap .bg_img {margin-top: 20px;}
+		.bg_design_wrap .bg_icons {margin-top: 20px;}
+		.bg_design_wrap .bg_back {width: 300px; height: 56px;}
+		.bg_design_wrap .bg_back .color_list {margin-top: 10px;}
+		.bg_design_wrap .selected {border: 2px solid #000;}
+		.bg_design_wrap .color_box {width: 25px; height: 25px; float: left; margin-right: 5px; cursor: pointer;}
+
+		.bg_design_wrap .bg_img .img_list {display: flex; margin-top: 10px;}
+		.bg_design_wrap .bg_img li {margin-right: 10px;}
+		.bg_design_wrap .bg_img a img {display: block; width: 100px;}
+		.bg_design_wrap .icon_list {display: flex; flex-wrap: wrap;}
+		.bg_design_wrap .box_icon {position: relative; width: 120px; height: 120px; margin-top: 5px; margin-right: 5px; border: 1px solid #ccc; cursor: pointer;}
+		.bg_design_wrap .box_icon a img {position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto;}
+		.bg_design_wrap .bg_text {margin-top: 20px;}
+		.bg_design_wrap .bg_text textarea {margin-top: 10px;}
+	</style>
+</head>
+
+<body>
+	<div class="content">
+		<div class="bg_design_wrap">
+			<div class="bg_design_tit">
+				<p>다꾸! 배꾸! 노빠구</p>
+				<h1>위글위글 x LG U+</br>
+					아이폰14 '배꾸 아티스트' 대회
+				</h1>
+			</div>
+	
+			<div class="bg_designer">
+				<div class="view_bg">
+					<div class="design_inner"></div>
+				</div>
+				<div class="bg_info">
+					<div id="bg_back" class="bg_back">
+						<strong>배경 색상</strong>
+						<div id="color_list" class="color_list"></div>
+					</div>
+					<div class="bg_img">
+						<strong>배경 이미지</strong>
+						<ul class="img_list">
+							<li><a href="#" class="change_img"><img src="../event/img/bg1.jpg" alt=""></a></li>
+							<li><a href="#" class="change_img"><img src="../event/img/bg2.jpg" alt=""></a></li>
+						</ul>
+					</div>
+					<div class="bg_icons">
+						<strong>아이콘</strong>
+						<ul class="icon_list">
+							<li class="box_icon">
+								<a href="#"><img src="../event/img/emoticons1.svg" alt=""></a>
+							</li>
+							<li class="box_icon">
+								<a href="#"><img src="../event/img/emoticons2.svg" alt=""></a>
+							</li>
+							<li class="box_icon">
+								<a href="#"><img src="../event/img/emoticons3.svg" alt=""></a>
+							</li>
+							<li class="box_icon">
+								<a href="#"><img src="../event/img/emoticons4.svg" alt=""></a>
+							</li>
+							<li class="box_icon">
+								<a href="#"><img src="../event/img/emoticons5.svg" alt=""></a>
+							</li>
+							<li class="box_icon">
+								<a href="#"><img src="../event/img/emoticons6.svg" alt=""></a>
+							</li>
+							<li class="box_icon">
+								<a href="#"><img src="../event/img/emoticons7.svg" alt=""></a>
+							</li>
+							<li class="box_icon">
+								<a href="#"><img src="../event/img/emoticons8.svg" alt=""></a>
+							</li>
+							<li class="box_icon">
+								<a href="#"><img src="../event/img/emoticons9.svg" alt=""></a>
+							</li>
+							<li class="box_icon">
+								<a href="#"><img src="../event/img/emoticons10.svg" alt=""></a>
+							</li>
+						</ul>
+					</div>
+					<div class="bg_text">
+						<strong>텍스트 입력</strong>
+						<div class="txt_area">
+							<textarea id="txt_area" cols="60" rows="5"></textarea>
+						</div>
+					</div>
+                    <div class="bg_btn">
+                        <button onclick="javascript:submitBtn();">제출</button>
+                    </div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- script -->
+	<script>
+		
+	</script>
+</body>
+
+</html>

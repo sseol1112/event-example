@@ -2,10 +2,17 @@
 let selectedColor; //선택한 컬러값 저장할 변수
 // change img
 let viewImg = document.querySelector(".design_inner");
+let viewText = document.querySelector('.design_inner .text_area');
+let getText = document.querySelector('.view_inner .text_area');
 let bgImg = document.querySelectorAll(".change_img");
 // icon img
 let iconImg = document.querySelectorAll(".box_icon");
 let textMsg = document.querySelector("#txt_area");
+
+let bgBtn = document.querySelector(".bg_btn button");
+let addBtn = document.querySelector(".txt_add_btn button");
+let getBtn = document.querySelector(".get_btn button");
+let bxIcon = document.querySelectorAll(".box_icon a img");
 
 
 window.onload = function(){
@@ -37,14 +44,38 @@ function colorSet(colorPick){
 }
 
 
+bgBtn.addEventListener('click', function(){
+    submitBtn();
+});
+addBtn.addEventListener('click', function(){
+    addText();
+});
+
+getBtn.addEventListener('click', function(){
+    getInfomation();
+});
 
 for(let i = 0; i < bgImg.length; i++){
     bgImg[i].addEventListener("click", changeImg); // 이벤트 처리
 }
 
-for(let i = 0; i < iconImg.length; i++){
-    iconImg[i].addEventListener("click", addIcon);
-}
+// 아이콘 클릭시, 
+// for(let i = 0; i < iconImg.length; i++){
+//     iconImg[i].addEventListener("click", addIcon);
+// }
+
+// function addIcon(e) {
+//     let iconImgUrl = e.target;
+//     let iconImgSrc = e.target.getAttribute("src");
+
+//     console.log(iconImgUrl);
+//     viewImg.innerHTML = `<div class="view_icon"><a href="javascript:;" class="btn-del">X</a><img src='${iconImgSrc}'></div>`;
+    
+//     document.querySelector('.btn-del').addEventListener('click', function(e){
+//         const curDelEl = e.target.parentElement;
+//         curDelEl.remove();
+//     })
+// }
 
 function changeImg(e){ // 이미지 바뀌는 함수
     let target = e.target;
@@ -53,33 +84,92 @@ function changeImg(e){ // 이미지 바뀌는 함수
 }
 
 // icon drag & drop
-function addIcon(e) {
-    let iconImgUrl = e.target;
-    let iconImgSrc = e.target.getAttribute("src");
-
-    console.log(iconImgUrl);
-    viewImg.innerHTML = `<div class="view_icon"><a href="javascript:;" class="btn-del">X</a><img src='${iconImgSrc}'></div>`;
+// 추가내용 - 22.09.15 drag&drop
+for(let i=0; i<bxIcon.length; i++) {
+    bxIcon[i].onmousedown = function(event) {
+        let shiftX = event.clientX - bxIcon[i].getBoundingClientRect().left;
+        let shiftY = event.clientY - bxIcon[i].getBoundingClientRect().top;
+                
+        bxIcon[i].style.width = "110px";
+        bxIcon[i].style.height = "110px";
+        bxIcon[i].style.position = 'absolute';
+        bxIcon[i].style.zIndex = 1000;
+        
+        viewImg.append(bxIcon[i]);
     
-    document.querySelector('.btn-del').addEventListener('click', function(e){
-        const curDelEl = e.target.parentElement;
-        curDelEl.remove();
-    })
-}
+        moveAt(event.pageX, event.pageY);
+    
+        // 초기 이동을 고려한 좌표 (pageX, pageY)에서 아이콘 대상을 이동함
+        function moveAt(pageX, pageY) {
+            bxIcon[i].style.left = pageX - shiftX + 'px';
+            bxIcon[i].style.top = pageY - shiftY + 'px';
+        }
+    
+        function onMouseMove(event) {
+            moveAt(event.pageX, event.pageY);
+        }
+    
+        // mousemove로 아이콘 대상을 움직입니다.
+        document.addEventListener('mousemove', onMouseMove);
+    
+        // 아이콘을 드롭하고, 불필요한 핸들러를 제거합니다. (★ 중요!)
+        bxIcon[i].onmouseup = function() {
+            document.removeEventListener('mousemove', onMouseMove);
+            bxIcon[i].onmouseup = null;
+        };
+    
+    };
+    
+    bxIcon[i].ondragstart = function() {
+        return false;
+    };
 
-// test api post (axios.post 활용)
+}
+// 추가내용 - 22.09.15 drag&drop
+
 function submitBtn() {
-    let bgTest = viewImg.style.backgroundImage;
-    let currIconImg = viewImg.children[0].lastChild;
-    let currIconImgSrc = currIconImg.src;
-    let textMsgVal = textMsg.value;
-    const selectedVal = {
-        text : textMsgVal,
-        bgImg : bgTest,
-        imgIconSrc : currIconImgSrc
-    }
-    console.log(textMsgVal);
-    console.log("이미지: "+bgTest, "타겟: "+currIconImgSrc);
-    //localStorage 활용해서 데이터 저장
-    localStorage.setItem('cart', JSON.stringify(selectedVal))
+    let currBgImg = viewImg.style.backgroundImage;
+    let currIconImg = viewImg.children;
+    let currIconImgArr = [];
+    let currText = viewText.innerHTML;
+    
 
+    for(let i=0; i<currIconImg.length; i++) {
+        currIconImgArr.push(currIconImg[i].src);
+    }
+    const selectedVal = {
+        text : currText,
+        bgImg : currBgImg,
+        imgIconSrc : currIconImgArr
+    }
+    //localStorage 활용해서 데이터 저장
+    localStorage.setItem('cart', JSON.stringify(selectedVal));
+    
 }
+
+function addText() {
+    let textMsgValue = textMsg.value;
+    viewText.append(textMsgValue);
+}
+
+function getInfomation () {
+    let cartItem = JSON.parse(localStorage.getItem('cart'));
+    let cartItemText = cartItem.text;
+    let cartImg = cartItem.imgIconSrc;
+    
+    let html = '';
+
+    getText.innerHTML = cartItemText;
+    html += '<div class="img_area">';
+    for(var i =0; i<cartImg.length; i++){
+        html += '<img src="'+cartImg[i]+'">';
+    }
+    html += '</div>';
+    html += '<div class="text_area">' + cartItemText + '</div>';
+
+    getText.innerHTML = html;
+    
+}
+
+
+

@@ -11,6 +11,9 @@
 	<style>
 		* {padding: 0; margin: 0; box-sizing: border-box;}
 		ol, ul {list-style: none;}
+		a {text-decoration:none; color:#000;}
+		.btn{ display: inline;}
+		button{padding:10px 12px; border-radius:8px; background:#555; color:#fff; border:0;}
 
 		.bg_design_wrap {width: 1200px; margin: 100px auto;}
 		.bg_design_wrap .bg_design_tit {margin-bottom: 100px; text-align: center;}
@@ -33,6 +36,9 @@
 		.bg_design_wrap .box_icon a img {position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto;}
 		.bg_design_wrap .bg_text {margin-top: 20px;}
 		.bg_design_wrap .bg_text textarea {margin-top: 10px;}
+
+		.view_icon {position:relative;}
+		.btn-del {padding:2px 8px; color:#fff; background:#555; border-radius: 8px; position: absolute; top:0; left:0;}		
 	</style>
 </head>
 
@@ -48,7 +54,12 @@
 	
 			<div class="bg_designer">
 				<div class="view_bg">
-					<div class="design_inner"></div>
+					<div class="design_inner">
+						<div class="text_area"></div>
+					</div>
+					<div class="view_inner">
+						<div class="text_area"></div>
+					</div>
 				</div>
 				<div class="bg_info">
 					<div id="bg_back" class="bg_back">
@@ -58,42 +69,42 @@
 					<div class="bg_img">
 						<strong>배경 이미지</strong>
 						<ul class="img_list">
-							<li><a href="#" class="change_img"><img src="../event/img/bg1.jpg" alt=""></a></li>
-							<li><a href="#" class="change_img"><img src="../event/img/bg2.jpg" alt=""></a></li>
+							<li><a href="javascript:;" class="change_img"><img src="../event/img/bg1.jpg" alt=""></a></li>
+							<li><a href="javascript:;" class="change_img"><img src="../event/img/bg2.jpg" alt=""></a></li>
 						</ul>
 					</div>
 					<div class="bg_icons">
 						<strong>아이콘</strong>
 						<ul class="icon_list">
 							<li class="box_icon">
-								<a href="#"><img src="../event/img/emoticons1.svg" alt=""></a>
+								<a href="javascript:;"><img src="../event/img/emoticons1.svg" alt=""></a>
 							</li>
 							<li class="box_icon">
-								<a href="#"><img src="../event/img/emoticons2.svg" alt=""></a>
+								<a href="javascript:;"><img src="../event/img/emoticons2.svg" alt=""></a>
 							</li>
 							<li class="box_icon">
-								<a href="#"><img src="../event/img/emoticons3.svg" alt=""></a>
+								<a href="javascript:;"><img src="../event/img/emoticons3.svg" alt=""></a>
 							</li>
 							<li class="box_icon">
-								<a href="#"><img src="../event/img/emoticons4.svg" alt=""></a>
+								<a href="javascript:;"><img src="../event/img/emoticons4.svg" alt=""></a>
 							</li>
 							<li class="box_icon">
-								<a href="#"><img src="../event/img/emoticons5.svg" alt=""></a>
+								<a href="javascript:;"><img src="../event/img/emoticons5.svg" alt=""></a>
 							</li>
 							<li class="box_icon">
-								<a href="#"><img src="../event/img/emoticons6.svg" alt=""></a>
+								<a href="javascript:;"><img src="../event/img/emoticons6.svg" alt=""></a>
 							</li>
 							<li class="box_icon">
-								<a href="#"><img src="../event/img/emoticons7.svg" alt=""></a>
+								<a href="javascript:;"><img src="../event/img/emoticons7.svg" alt=""></a>
 							</li>
 							<li class="box_icon">
-								<a href="#"><img src="../event/img/emoticons8.svg" alt=""></a>
+								<a href="javascript:;"><img src="../event/img/emoticons8.svg" alt=""></a>
 							</li>
 							<li class="box_icon">
-								<a href="#"><img src="../event/img/emoticons9.svg" alt=""></a>
+								<a href="javascript:;"><img src="../event/img/emoticons9.svg" alt=""></a>
 							</li>
 							<li class="box_icon">
-								<a href="#"><img src="../event/img/emoticons10.svg" alt=""></a>
+								<a href="javascript:;"><img src="../event/img/emoticons10.svg" alt=""></a>
 							</li>
 						</ul>
 					</div>
@@ -103,9 +114,17 @@
 							<textarea id="txt_area" cols="60" rows="5"></textarea>
 						</div>
 					</div>
-                    <div class="bg_btn">
-                        <button onclick="javascript:submitBtn();">제출</button>
-                    </div>
+					<div class="btn_wrap">
+						<div class="btn txt_add_btn">
+							<button>텍스트 추가</button>
+						</div>
+						<div class="btn bg_btn">
+							<button>제출</button>
+						</div>
+						<div class="btn get_btn">
+							<button>입력값 가져오기</button>
+						</div>
+					</div>
 				</div>
 
 			</div>

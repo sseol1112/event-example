@@ -133,6 +133,10 @@ function submitBtn() {
     let currIconImgArr = [];
     let currText = viewText.innerHTML;
     
+    // 배경색상 선택한 경우, currBgImg에 선택된 배경색상값으로 적용
+    if(currBgImg == "initial") {
+        currBgImg = viewImg.style.backgroundColor;
+    }
 
     for(let i=0; i<currIconImg.length; i++) {
         // 220916 추가 - IMG 형식 체크 용 조건문 추가 (img형식만 배열변수에 push하기 위해서)
@@ -152,6 +156,7 @@ function submitBtn() {
         //localStorage 활용해서 데이터 저장
         localStorage.setItem('cart', JSON.stringify(selectedVal));
         alert('제출 되었습니다.');
+        location.reload();
     }
 }
 

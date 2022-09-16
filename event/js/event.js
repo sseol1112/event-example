@@ -135,7 +135,10 @@ function submitBtn() {
     
 
     for(let i=0; i<currIconImg.length; i++) {
-        currIconImgArr.push(currIconImg[i].src);
+        // 220916 추가 - IMG 형식 체크 용 조건문 추가 (img형식만 배열변수에 push하기 위해서)
+        if(currIconImg[i].nodeName === "IMG") { 
+            currIconImgArr.push(currIconImg[i].src);
+        }
     }
     const selectedVal = {
         text : currText,
